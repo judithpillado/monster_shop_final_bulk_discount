@@ -61,5 +61,10 @@ RSpec.describe 'As a merchant employee' do
       expect(current_path).to eq("/merchant/orders/#{@order1.id}")
 
     end
+
+    it "displays a link to the discounts" do
+      visit "/merchant/dashboard"
+      expect(page).to have_link("Merchant Discounts")
+    end
   end
 end
