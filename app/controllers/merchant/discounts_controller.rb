@@ -4,4 +4,7 @@ class Merchant::DiscountsController < ApplicationController
     @discounts = Discount.all
   end
 
+  def new
+  end
+
 end
