@@ -28,13 +28,26 @@ class Cart
   end
 
   def subtotal(item)
-    item.price * @contents[item.id.to_s]
+    quantity = @contents[item.id.to_s]
+    percentage = item.merchant.discounts.where("minimum_quantity <= ?", quantity).maximum(:discount_percentage)
+    if percentage == nil
+      item.price * quantity
+    elsif
+      (item.price * quantity) * (100 - percentage)/100.0
+    end
   end
 
   def total
-    @contents.sum do |item_id,quantity|
-      Item.find(item_id).price * quantity
+    total = 0
+    items.each do |item, quantity|
+      percentage = item.merchant.discounts.where("minimum_quantity <= ?", quantity).maximum(:discount_percentage)
+      if percentage == nil
+        total += item.price * quantity
+      elsif
+        total += (item.price * quantity) * (100 - percentage)/100.0
+      end
     end
+    total
   end
 
 end

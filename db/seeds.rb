@@ -28,3 +28,6 @@ user = User.create(name: "Jane Doe", address: "123 Palm St", city: "Chicago", st
 merchant_employee1 = User.create(name: "Samaria Pillado", address: "456 Cool St", city: "Chicago", state: "IL", zip: 60619, email: "samaria@email.com", password: "password", password_confirmation: "password", role: 1)
 merchant_employee2 = User.create(name: "Cloe Pillado", address: "456 Cool St", city: "Chicago", state: "IL", zip: 60619, email: "cloe@email.com", password: "password", password_confirmation: "password", role: 1)
 admin = User.create(name: "Michael Scott", address: "126 Kellum Court", city: "Scranton", state: "PA", zip: 18510, email: "michaelscarn@email.com", password: "holly", password_confirmation: "holly", role: 2)
+
+discount1 = clothing_boutique.discounts.create!(discount_percentage: 30, minimum_quantity: 5)
+discount2 = shoe_store.discounts.create!(discount_percentage: 20, minimum_quantity: 10)
