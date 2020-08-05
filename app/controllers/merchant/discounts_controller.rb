@@ -29,6 +29,12 @@ class Merchant::DiscountsController < ApplicationController
     @discount = Discount.find(params[:discount_id])
   end
 
+  def update
+    @discount = Discount.find(params[:discount_id])
+    @discount.update(discount_params)
+    redirect_to("/merchant/discounts")
+  end
+
   private
 
   def discount_params
