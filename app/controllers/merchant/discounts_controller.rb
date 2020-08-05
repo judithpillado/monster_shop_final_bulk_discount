@@ -4,6 +4,11 @@ class Merchant::DiscountsController < ApplicationController
     @discounts = Discount.all
   end
 
+  # def show
+  #   # require "pry"; binding.pry
+  #   @discount = Discount.find(params[:discount_id])
+  # end
+
   def new
     @discount = Discount.new
   end
@@ -18,6 +23,16 @@ class Merchant::DiscountsController < ApplicationController
       flash[:error] = @discount.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def edit
+    @discount = Discount.find(params[:discount_id])
+  end
+
+  def update
+    @discount = Discount.find(params[:discount_id])
+    @discount.update(discount_params)
+    redirect_to("/merchant/discounts")
   end
 
   private
