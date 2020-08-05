@@ -45,6 +45,7 @@ RSpec.describe 'As a registered user' do
         @order2 = Order.all.last
 
         @orders = [@order1, @order2]
+
       end
 
     it "I can access the order show page by clicking on the order link from the order index page" do
@@ -86,3 +87,38 @@ RSpec.describe 'As a registered user' do
     end
   end
 end
+
+# RSpec.describe 'As a registered user when I visit a show page for an order' do
+#
+#   it "After I've placed an order to which a discount has been applied, the discount is reflected on that order show page." do
+#     @user = create(:user)
+#     visit login_path
+#     fill_in :email, with: @user.email
+#     fill_in :password, with: @user.password
+#     click_button 'Log In'
+#     @clothing_boutique = Merchant.create(name: "Elah's Boutique", address: '227 Skirt St.', city: 'Chicago', state: 'IL', zip: 60619)
+#     @blouse = @clothing_boutique.items.create(name: "Blouse", description: "Soft pink chiffon blouse", price: 15, image: "https://m.media-amazon.com/images/I/71HraJAaF3L._SR500,500_.jpg", inventory: 15)
+#     @discount1 = @clothing_boutique.discounts.create!(discount_percentage: 30, minimum_quantity: 5)
+#     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+#
+#     visit "/items/#{@blouse.id}"
+#     click_on "Add To Cart"
+#     visit "/cart"
+#     4.times do
+#         click_button "Add 1"
+#       end
+#     visit orders_new_path
+#     fill_in :name, with: @user.name
+#     fill_in :address, with: @user.address
+#     fill_in :city, with: @user.city
+#     fill_in :state, with: @user.state
+#     fill_in :zip, with: @user.zip
+#     click_on "Create Order"
+#     order = Order.last
+#     visit "/profile/orders/#{order.id}"
+#     # within("#item-#{@items1.id}") do
+#     #   expect(page).to have_content("$375")
+#     # end
+#     expect(page).to have_content("Grand Total: $52.50")
+#   end
+# end
