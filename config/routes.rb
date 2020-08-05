@@ -73,6 +73,7 @@ Rails.application.routes.draw do
     patch "/items/:item_id", to: "items#update"
     get "/discounts", to: "discounts#index"
     get "/discounts/new", to: "discounts#new"
+    post "/discounts", to: "discounts#create"
     #resources :items
   end
 
