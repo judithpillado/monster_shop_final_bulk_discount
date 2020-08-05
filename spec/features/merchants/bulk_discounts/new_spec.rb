@@ -10,6 +10,8 @@ RSpec.describe 'As a Merchant Employee' do
     @item1 = create(:item, merchant_id: @merchant.id)
     @item2 = create(:item, merchant_id: @merchant.id)
 
+    @discount1 = @merchant.discounts.create!(discount_percentage: 20, minimum_quantity: 20, merchant: @merchant1)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_employee)
   end
 
