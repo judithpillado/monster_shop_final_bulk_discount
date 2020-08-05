@@ -6,6 +6,7 @@
     <p>Discount: <%= discount.discount_percentage %>%</p>
     <p>Minimum Quantity: <%= discount.minimum_quantity %> items</p>
     <h4><%= link_to "Edit Discount", "/merchant/discounts/#{discount.id}/edit" %></h4>
+    <h4><%= link_to "Delete Discount", "/merchant/discounts/#{discount.id}/destroy" %></h4>
   <% end  %>
 </section>
 
