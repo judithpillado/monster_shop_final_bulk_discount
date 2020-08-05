@@ -13,19 +13,8 @@ RSpec.describe 'As a Merchant Employee' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merchant_employee)
   end
 
-  it "I can edit an existing discount " do
-    visit "/merchant/discounts/new"
-    discount_percentage = 30
-    minimum_quantity = 10
-    fill_in :discount_percentage, with: discount_percentage
-    fill_in :minimum_quantity, with: minimum_quantity
-
-    click_button 'Create Discount'
-
-    expect(current_path).to eq("/merchant/discounts")
-
-    expect(page).to have_content("Discount: #{discount_percentage}%")
-    expect(page).to have_content("Minimum Quantity: #{minimum_quantity} items")
-  end
+  # it "I can edit an existing discount " do
+  #   visit "/merchant/discounts
+  # end
 
 end
