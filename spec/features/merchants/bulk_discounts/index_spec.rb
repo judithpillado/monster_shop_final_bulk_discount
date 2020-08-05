@@ -15,9 +15,11 @@ RSpec.describe 'As a Merchant Employee' do
   it "I see all of the discounts" do
     visit "/merchant/discounts"
 
-    expect(page).to have_content("Discount ##{@discount1.id}")
-    expect(page).to have_content("Discount: #{@discount1.discount_percentage}%")
-    expect(page).to have_content("Minimum Quantity: #{@discount1.minimum_quantity} items")
+    within("#discount-#{@discount1.id}") do
+      expect(page).to have_content("Discount ##{@discount1.id}")
+      expect(page).to have_content("Discount: #{@discount1.discount_percentage}%")
+      expect(page).to have_content("Minimum Quantity: #{@discount1.minimum_quantity} items")
+    end
   end
 
   it "I see a link to add a new discount " do
