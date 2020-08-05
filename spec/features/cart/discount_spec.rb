@@ -30,7 +30,7 @@ RSpec.describe "As a User" do
     end
     # total = @blouse.price * 5
     # percentage = @discount1.discount_percentage * 0.01
-    expect(page).to have_content("Total: $75.00")
+    expect(page).to have_content("Total: $52.50")
   end
 
   it "displays the discount only for the item that's on sale, not all the items from the same merchant" do
@@ -46,7 +46,7 @@ RSpec.describe "As a User" do
     click_on "Add To Cart"
     visit "/cart"
 
-    expect(page).to have_content("Total: $105.00")
+    expect(page).to have_content("Total: $82.50")
   end
 
   it "if I add many DIFFERENT items in my cart that meet the minimum quantity but don't meet the sale SINGLE item minimum quantity, there is no discount" do
