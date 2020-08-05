@@ -78,6 +78,7 @@ Rails.application.routes.draw do
     post "/discounts", to: "discounts#create"
     get "/discounts/:discount_id/edit", to: "discounts#edit"
     patch "/discounts/:discount_id", to: "discounts#update"
+    get "/discounts/:discount_id/destroy", to: "discounts#destroy"
     #resources :items
   end
 
