@@ -16,15 +16,20 @@ RSpec.describe 'As a Merchant Employee' do
   end
 
   it "I can edit a discount" do
-    visit "/merchant/discounts/#{@discount1.id}/edit"
+    visit "/merchant/discounts"
+
+    within("#discount-#{@discount1.id}") do
+      click_link "Edit Discount"
+    end
+
+    expect(current_path).to eq("/merchant/discounts/#{@discount1.id}/edit")
     discount_percentage = 20
-    minimum_quantity = nil
+    minimum_quantity = 20
     fill_in :discount_percentage, with: discount_percentage
     fill_in :minimum_quantity, with: minimum_quantity
+    click_button 'Update Discount'
 
-    click_button 'Edit Discount'
-
-    expect(current_path).to eq("/merchants/discounts/#{@discount1.id}")
+    expect(current_path).to eq("/merchant/discounts")
     expect(page).to have_content("Discount: #{discount_percentage}%")
     expect(page).to have_content("Minimum Quantity: #{minimum_quantity} items")
   end
