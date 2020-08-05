@@ -14,6 +14,7 @@ RSpec.describe 'As a Merchant Employee' do
   end
 
   it "I can create a new discount " do
+
     visit "/merchant/discounts/new"
     discount_percentage = 30
     minimum_quantity = 10
@@ -26,6 +27,22 @@ RSpec.describe 'As a Merchant Employee' do
 
     expect(page).to have_content("Discount: #{discount_percentage}%")
     expect(page).to have_content("Minimum Quantity: #{minimum_quantity} items")
+  end
+
+  it "I can't create a discount if I don't fill out the discount percentage field" do
+
+    visit "/merchant/discounts/new"
+    discount_percentage = nil
+    minimum_quantity = 10
+    fill_in :discount_percentage, with: discount_percentage
+    fill_in :minimum_quantity, with: minimum_quantity
+
+    click_button 'Create Discount'
+
+    expect(current_path).to eq(merchant_discounts_path)
+
+    expect(page).to have_content("Discount percentage can't be blank")
+    # expect(page).to have_field(:minimum_quantity, with: minimum_quantity)
   end
 
 end
